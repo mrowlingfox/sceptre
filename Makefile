@@ -128,10 +128,10 @@ dist: clean
 	ls -l dist
 
 install: clean
-	pip install .
+	pip3 install .
 
 install-dev: clean
-	pip install -r requirements/prod.txt
-	pip install -r requirements/dev.txt
-	pip install -e .
+	pip3 install -r requirements/prod.txt
+	pip3 install -r requirements/dev.txt
+	pip3 install -e .
 	@echo "To install the documentation dependencies, run:\ncd docs\nmake install"
