@@ -395,7 +395,7 @@ class ConfigReader(object):
             findall = re.findall(r"(')(!.*)(\1)", rendered_template)
             for res in findall:
                 rendered_template = rendered_template.replace(f"{res[0]}{res[1]}{res[2]}", res[1])
-            
+
             config = yaml.safe_load(rendered_template)
 
             return config
