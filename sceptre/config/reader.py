@@ -15,6 +15,7 @@ import logging
 from os import environ, path, walk
 from pkg_resources import iter_entry_points
 import yaml
+import re
 
 from jinja2 import Environment
 from jinja2 import StrictUndefined
@@ -391,6 +392,10 @@ class ConfigReader(object):
                 environment_variable=environ
             )
 
+            findall = re.findall(r"(')(!.*)(\1)", rendered_template)
+            for res in findall:
+                rendered_template = rendered_template.replace(f"{res[0]}{res[1]}{res[2]}", res[1])
+            
             config = yaml.safe_load(rendered_template)
 
             return config
